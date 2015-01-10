@@ -19,7 +19,11 @@ action(function(req, res){
   if (storedCode && storedCode != authCode) {
     return res.redirect('/auth');
   }
+  /* SG Changes Begin
   res.render('index', {title: 'Monitor'});
+   */
+  res.render('index', {title: 'Monitor', manipulation: Monitor().config('manipulation')});
+  /* SG Changes End */
 });
 
 // API

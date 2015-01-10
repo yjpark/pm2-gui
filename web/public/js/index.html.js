@@ -636,13 +636,27 @@ function procEvents(o){
   }).end().find('[data-toggle="tooltip"]').tooltip({container: 'body'});
 }
 
+/* SG Changes Begin */
+function removeActions(o){
+  o.find('.proc-ops').remove();
+}
+/* SG Changes End */
+
 /**
  * Attach events to process layout.
  * @param {jQuery} o
  */
 function attachProcEvents(o){
   bindPopup(o);
+  /* SG Changes Begin
   procEvents(o);
+   */
+  if (manipulation) {
+    procEvents(o);
+  } else {
+    removeActions(o);
+  }
+  /* SG Changes End */
 }
 
 /**
