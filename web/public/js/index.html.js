@@ -104,7 +104,7 @@ function setFPEnable(enable, exceptScroll){
  * Initialize socket.io client and add listeners.
  */
 function listenSocket(){
-  sockets.sys = io('/sys');
+  sockets.sys = io('/sys', {path: url_prefix + "/socket.io"}); //SG Changed
 
   // error handler.
   sockets.sys.on('error', function(err){
@@ -778,7 +778,7 @@ function tailLogs(){
     return;
   }
   if (!sockets.log) {
-    sockets.log = io('/log');
+    sockets.log = io('/log', {path: url_prefix + "/socket.io"}); //SG Changed
     sockets.log.on('log', appendLogs);
     sockets.log.on('connect', function(){
       sockets.log.emit('tail', popupProc.pm_id);
@@ -834,7 +834,7 @@ function monitorProc(){
     return;
   }
   if (!sockets.proc) {
-    sockets.proc = io('/proc');
+    sockets.proc = io('/proc', {path: url_prefix + "/socket.io"}); //SG Changed
     sockets.proc.on('proc', appendData);
     sockets.proc.on('connect', function(){
       sockets.proc.emit('proc', popupProc.pid);

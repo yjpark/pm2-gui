@@ -22,7 +22,12 @@ action(function(req, res){
   /* SG Changes Begin
   res.render('index', {title: 'Monitor'});
    */
-  res.render('index', {title: 'Monitor', manipulation: Monitor().config('manipulation')});
+  var url_prefix = '/proxy/' + (process.env.HOSTNAME || 'localhost');
+  res.render('index', {
+      title: 'Monitor',
+      manipulation: Monitor().config('manipulation'),
+      url_prefix: url_prefix
+  });
   /* SG Changes End */
 });
 
