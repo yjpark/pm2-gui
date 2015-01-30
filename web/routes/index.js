@@ -22,7 +22,7 @@ action(function(req, res){
   /* SG Changes Begin
   res.render('index', {title: 'Monitor'});
    */
-  var url_prefix = '/proxy/' + (process.env.HOSTNAME || 'localhost');
+  var url_prefix = '/pm2_proxy/' + (process.env.HOSTNAME || 'localhost');
   res.render('index', {
       title: 'Monitor',
       manipulation: Monitor().config('manipulation'),
